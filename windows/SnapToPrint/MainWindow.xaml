@@ -1,0 +1,36 @@
+<Window x:Class="SnapToPrint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Snap-to-Print" Height="760" Width="660" MinWidth="520">
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="16">
+      <Border x:Name="StatusBorder" Background="Gray" Padding="14" CornerRadius="6">
+        <TextBlock x:Name="StatusText" Text="Starting..." FontSize="22" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" />
+      </Border>
+      <TextBlock x:Name="DetailText" Margin="0,12,0,0" FontSize="15" TextWrapping="Wrap" />
+      <WrapPanel Margin="0,12,0,0">
+        <Button Content="Open event folder" Padding="14,8" Margin="0,0,8,8" Click="OpenFolder_Click" />
+        <Button Content="Reconnect" Padding="14,8" Margin="0,0,8,8" Click="Reconnect_Click" />
+        <Button x:Name="TestBtn" Content="Test connection" Padding="14,8" Margin="0,0,8,8" Click="Test_Click" />
+      </WrapPanel>
+      <Expander x:Name="SetupExpander" Header="Setup (one-time)" Margin="0,12,0,0" FontSize="14">
+        <StackPanel Margin="8">
+          <TextBlock TextWrapping="Wrap" Text="ONE-TIME SETUP&#10;1. Install and open Snap-to-Print on the phone. Allow photo access and notifications.&#10;2. Turn on the phone's Wi-Fi hotspot and connect this laptop to it. 'No Internet' is fine.&#10;3. Type the pairing code shown on the phone below, pick a destination folder, press Save.&#10;4. Press 'Test connection'.&#10;&#10;EACH EVENT&#10;Turn on the hotspot, connect the laptop, keep this app open (it can sit in the tray), tap START EVENT on the phone, then use the normal Camera app." />
+          <TextBlock Text="Pairing code (from the phone)" Margin="0,10,0,2" />
+          <TextBox x:Name="PairBox" FontFamily="Consolas" FontSize="16" />
+          <TextBlock Text="Destination folder" Margin="0,10,0,2" />
+          <DockPanel>
+            <Button DockPanel.Dock="Right" Content="Browse..." Padding="10,4" Margin="6,0,0,0" Click="Browse_Click" />
+            <TextBox x:Name="DestBox" />
+          </DockPanel>
+          <TextBlock Text="Phone IP address (optional, only for troubleshooting)" Margin="0,10,0,2" />
+          <TextBox x:Name="IpBox" />
+          <Button Content="Save" Padding="14,8" Margin="0,12,0,0" HorizontalAlignment="Left" Click="Save_Click" />
+        </StackPanel>
+      </Expander>
+      <TextBlock Text="Recent problems" FontWeight="Bold" Margin="0,16,0,4" />
+      <ListBox x:Name="ErrorList" Height="130" />
+      <Button Content="Open log folder" Padding="10,4" Margin="0,8,0,0" HorizontalAlignment="Left" Click="OpenLogs_Click" />
+    </StackPanel>
+  </ScrollViewer>
+</Window>
